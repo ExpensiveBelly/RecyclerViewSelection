@@ -2,6 +2,6 @@ package com.cmcmarkets.util.selection
 
 import android.view.View
 
-interface ISelectionContainer {
+interface SelectionContainer {
     val selectionContainer: View
 }

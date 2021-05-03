@@ -11,8 +11,8 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.cmcmarkets.util.selection.ISelectionContainer
-import com.cmcmarkets.util.selection.ISelectionItemDetails
+import com.cmcmarkets.util.selection.SelectionContainer
+import com.cmcmarkets.util.selection.SelectionItemDetails
 
 typealias LayoutResource = Int
 
@@ -61,7 +61,7 @@ abstract class SelectionAdapter<T : Identifiable, VH : SelectionViewHolder<T>>(
 }
 
 abstract class SelectionViewHolder<T : Identifiable>(itemView: View) :
-    RecyclerView.ViewHolder(itemView), ISelectionItemDetails, ISelectionContainer {
+    RecyclerView.ViewHolder(itemView), SelectionItemDetails, SelectionContainer {
 
     private var key: String? = null
 

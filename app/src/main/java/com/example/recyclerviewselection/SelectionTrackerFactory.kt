@@ -2,19 +2,13 @@ package com.example.recyclerviewselection
 
 import android.graphics.Rect
 import android.view.*
-import android.widget.Toolbar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.selection.*
 import androidx.recyclerview.selection.SelectionPredicates.createSelectAnything
 import androidx.recyclerview.selection.SelectionTracker.Builder
 import androidx.recyclerview.widget.RecyclerView
-import com.cmcmarkets.util.selection.ISelectionItemDetails
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.datepicker.OnSelectionChangedListener
-import io.reactivex.rxjava3.disposables.Disposable
+import com.cmcmarkets.util.selection.SelectionItemDetails
 
 private const val SELECTION_ID = "selection_id"
-private const val EMPTY_ITEM_DETAILS_KEY = "empty_item_details_key"
 
 fun createMultipleItemsSelectionTracker(
     recyclerView: RecyclerView,
@@ -75,6 +69,6 @@ private class AdapterItemDetailsLookup(private val recyclerView: RecyclerView) :
     ItemDetailsLookup<String>() {
     override fun getItemDetails(event: MotionEvent) =
         recyclerView.findChildViewUnder(event.x, event.y)?.let { view ->
-            (recyclerView.getChildViewHolder(view) as ISelectionItemDetails).getItemDetails()
+            (recyclerView.getChildViewHolder(view) as SelectionItemDetails).getItemDetails()
         }
 }
