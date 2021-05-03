@@ -76,10 +76,5 @@ private class AdapterItemDetailsLookup(private val recyclerView: RecyclerView) :
     override fun getItemDetails(event: MotionEvent) =
         recyclerView.findChildViewUnder(event.x, event.y)?.let { view ->
             (recyclerView.getChildViewHolder(view) as ISelectionItemDetails).getItemDetails()
-        } ?: EmptyItemDetails
-}
-
-private object EmptyItemDetails : ItemDetailsLookup.ItemDetails<String>() {
-    override fun getPosition(): Int = Integer.MAX_VALUE
-    override fun getSelectionKey(): String = EMPTY_ITEM_DETAILS_KEY
+        }
 }
