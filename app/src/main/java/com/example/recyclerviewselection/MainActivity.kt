@@ -91,14 +91,14 @@ class MainActivity : AppCompatActivity() {
 }
 
 private fun createFakeItems() = listOf(
-    Item("1", "Finder", "Find files in your Mac"),
-    Item("2", "Calendar", "Add events"),
-    Item("3", "Microsoft Teams", "Chat with your teammates"),
-    Item("4", "Google Chrome", "Browser"),
-    Item("5", "Launchpad", "Run your apps"),
-    Item("6", "Evernote", "Take notes"),
-    Item("7", "Android Studio", "Develop Android apps"),
-    Item("8", "Settings", "Change the Settings in your computer"),
-    Item("9", "Sublime Text", "Text editor"),
-    Item("10", "Console", "Shell")
+    Item("0", "Finder", "Find files in your Mac"),
+    Item("1", "Calendar", "Add events"),
+    Item("2", "Microsoft Teams", "Chat with your teammates"),
+    Item("3", "Google Chrome", "Browser"),
+    Item("4", "Launchpad", "Run your apps"),
+    Item("5", "Evernote", "Take notes"),
+    Item("6", "Android Studio", "Develop Android apps"),
+    Item("7", "Settings", "Change the Settings in your computer"),
+    Item("8", "Sublime Text", "Text editor"),
+    Item("9", "Console", "Shell")
 )
