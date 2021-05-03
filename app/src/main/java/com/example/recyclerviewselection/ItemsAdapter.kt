@@ -30,6 +30,7 @@ class ItemsAdapter(
 
         override fun bind(item: Item, isActivated: Boolean) {
             super.bind(item, isActivated)
+            details.isVisible = !isActivated
             selectionContainer.alpha = if (isActivated) 0.5f else 1.0f
         }
 
