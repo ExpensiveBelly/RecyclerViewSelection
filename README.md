@@ -1,5 +1,13 @@
 # RecyclerView selection
 
+![Snip20210503_5](https://user-images.githubusercontent.com/6824465/116916959-eafb7100-ac45-11eb-902f-d10571fdc380.png)
+
+### Features:
+
+1. recyclerview-selection using String as a way to identify items (this allows mutability in the list as opposed to using position of the item in the list. Position of an item might change when the list mutates)
+2. ActionMode is displayed when items are activated.
+3. Activation of an item happens when long-press and also when the delete icon is clicked (due to implementation of `inSelectionHotspot` to activate when a specific item is clicked)
+
 Useful links:
 
 - https://androidkt.com/recyclerview-selection-28-0-0/
