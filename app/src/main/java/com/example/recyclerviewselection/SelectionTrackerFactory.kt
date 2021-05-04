@@ -30,10 +30,6 @@ fun createMultipleItemsSelectionTracker(
         })
     }
 
-/**
- * https://stackoverflow.com/questions/11354069/find-a-view-button-which-a-motion-event-ends-on
- */
-
 internal fun createItemDefaultItemDetails(
     adapterPosition: Int,
     selectionKey: String?,
