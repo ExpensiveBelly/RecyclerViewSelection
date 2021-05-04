@@ -36,8 +36,7 @@ abstract class SelectionAdapter<T : Identifiable, VH : SelectionViewHolder<T>>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
         viewHolderFactory(LayoutInflater.from(parent.context).inflate(itemLayout, parent, false))
 
-    private fun getItemKey(position: Int) =
-        if (position in 0 until currentList.size) getItemId(currentList[position]) else null
+    private fun getItemKey(position: Int) = getItemId(currentList[position])
 
     private fun getItemPosition(key: String) = currentList.indexOfFirst { getItemId(it) == key }
 
