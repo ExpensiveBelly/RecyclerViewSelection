@@ -1,6 +1,8 @@
 # RecyclerView selection
 
-![Snip20210503_5](https://user-images.githubusercontent.com/6824465/116916959-eafb7100-ac45-11eb-902f-d10571fdc380.png)
+![Snip20210504_5](https://user-images.githubusercontent.com/6824465/116990253-c39ab780-acca-11eb-9f20-eb0f985b529c.png)
+![Snip20210504_4](https://user-images.githubusercontent.com/6824465/116990264-c4cbe480-acca-11eb-905c-09fcdce3bc45.png)
+
 
 ### Features:
 
@@ -28,4 +30,4 @@ return item.inSelectionHotspot(e)
 ```
 
 Using this library it makes sense to startActionMode once the first item has been activated, so the
-user knows that the next click will be used for activating a non-item
+user knows that the next click will be used for activating a non-activated item or to deselect an already activated item.
