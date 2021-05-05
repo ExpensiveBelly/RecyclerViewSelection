@@ -30,7 +30,7 @@ fun createMultipleItemsSelectionTracker(
         })
     }
 
-internal fun createItemDefaultItemDetails(
+fun createItemDefaultItemDetails(
     adapterPosition: Int,
     selectionKey: String?,
     viewInSelectionHotSpot: () -> View
