@@ -2,6 +2,6 @@ package com.cmcmarkets.util.selection
 
 import androidx.recyclerview.selection.ItemDetailsLookup
 
-interface SelectionItemDetails {
+interface ISelectionItemDetails {
     fun getItemDetails(): ItemDetailsLookup.ItemDetails<String>
 }

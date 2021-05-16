@@ -12,6 +12,7 @@
     app:cardCornerRadius="@dimen/cardview_default_radius">
 
     <LinearLayout
+        android:id="@+id/name_details_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/row_highlight"

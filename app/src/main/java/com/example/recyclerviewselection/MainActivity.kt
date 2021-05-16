@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.view.ActionMode
 import androidx.recyclerview.selection.SelectionTracker
@@ -24,23 +26,20 @@ class MainActivity : AppCompatActivity() {
 
     private var actionMode: ActionMode? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        setSupportActionBar(findViewById<MaterialToolbar>(R.id.action_bar))
-
-        val itemsAdapter = ItemsAdapter(
+    private val itemsAdapter: ItemsAdapter by lazy {
+        ItemsAdapter(
             recyclerView = { recyclerView },
             itemClickListener = { item -> toast("$item clicked!") },
             onSelectionChangedListener = { selection ->
                 when {
                     selection.isEmpty -> {
                         finishActionMode()
+                        itemsAdapter.notifyItemsWithPredicate()
                     }
                     !selection.isEmpty -> {
                         if (actionMode == null) {
                             actionMode = createAndStartActionMode(this)
+                            itemsAdapter.notifyItemsWithPredicate()
                         }
                         actionMode?.title = selection.size().toString()
                     }
@@ -49,6 +48,15 @@ class MainActivity : AppCompatActivity() {
                 selectionSubject.onNext(selection.toList())
             }
         )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        setSupportActionBar(findViewById<MaterialToolbar>(R.id.action_bar))
+
+
         recyclerView.adapter = itemsAdapter
 
         itemsAdapter.submitList(createFakeItems())
@@ -95,10 +103,12 @@ private fun createFakeItems() = listOf(
     Item("1", "Calendar", "Add events"),
     Item("2", "Microsoft Teams", "Chat with your teammates"),
     Item("3", "Google Chrome", "Browser"),
+    Item("10", "Microsoft Messenger", "Chat", true),
     Item("4", "Launchpad", "Run your apps"),
     Item("5", "Evernote", "Take notes"),
     Item("6", "Android Studio", "Develop Android apps"),
     Item("7", "Settings", "Change the Settings in your computer"),
     Item("8", "Sublime Text", "Text editor"),
-    Item("9", "Console", "Shell")
+    Item("9", "Console", "Shell"),
+    Item("10", "Skype", "Video-Chat", true)
 )
