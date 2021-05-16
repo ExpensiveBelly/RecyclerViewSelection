@@ -48,9 +48,14 @@ private class RecyclerViewIdKeyProvider(
     override fun getPosition(key: String) = positionProvider(key)
 }
 
-private class AdapterItemDetailsLookupSelectMultipleItems(private val recyclerView: RecyclerView) : ItemDetailsLookup<String>() {
+private class AdapterItemDetailsLookupSelectMultipleItems(private val recyclerView: RecyclerView) :
+    ItemDetailsLookup<String>() {
     override fun getItemDetails(event: MotionEvent) =
         recyclerView.findChildViewUnder(event.x, event.y)?.let { view ->
             (recyclerView.getChildViewHolder(view) as ISelectionItemDetails).getItemDetails()
         }
+}
+
+fun <T : Identifiable> SelectionTracker<String>.deselectIfItemsNotFound(currentItems: List<T>) {
+    selection.forEach { key -> if (currentItems.none { it.key == key }) deselect(key) }
 }

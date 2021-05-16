@@ -79,7 +79,8 @@ class ItemsAdapter(
     ) : SelectionViewHolder<Item>(itemView, inSelectionHotSpot) {
         private val name = itemView.findViewById<TextView>(R.id.name)
         private val details = itemView.findViewById<TextView>(R.id.details)
-        private val name_details_container = itemView.findViewById<View>(R.id.name_details_container)
+        private val name_details_container =
+            itemView.findViewById<View>(R.id.name_details_container)
         override val selectionContainer = itemView.findViewById<View>(R.id.container)
 
         override fun bind(item: Item, isActivated: Boolean, isActionModeEnabled: Boolean) {
@@ -99,10 +100,11 @@ class ItemsAdapter(
     override val selectionPredicate: SelectionTracker.SelectionPredicate<String> =
         object : SelectionTracker.SelectionPredicate<String>() {
             override fun canSetStateForKey(key: String, nextState: Boolean) =
-                currentList.find { it.key == key }?.let(enabledPredicate) ?: false
+                if (nextState) currentList.find { it.key == key }?.let(enabledPredicate)
+                    ?: false else true
 
             override fun canSetStateAtPosition(position: Int, nextState: Boolean) =
-                currentList[position].let(enabledPredicate)
+                if (nextState) currentList[position].let(enabledPredicate) else true
 
             override fun canSelectMultiple() = true
         }

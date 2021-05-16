@@ -42,6 +42,11 @@ abstract class SelectionAdapter<T : Identifiable, VH : SelectionViewHolder<T>>(
             viewType
         )
 
+    override fun submitList(list: List<T>?) {
+        super.submitList(list)
+        tracker.deselectIfItemsNotFound(currentList)
+    }
+
     abstract val selectionPredicate: SelectionTracker.SelectionPredicate<String>
 
     abstract val inSelectionHotSpot: (viewType: Int, itemView: View, event: MotionEvent) -> Boolean
