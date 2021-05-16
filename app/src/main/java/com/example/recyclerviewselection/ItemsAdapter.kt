@@ -2,7 +2,10 @@ package com.example.recyclerviewselection
 
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.selection.Selection
 import androidx.recyclerview.selection.SelectionTracker
@@ -35,13 +38,15 @@ class ItemsAdapter(
                 view,
                 itemClickListener,
                 inSelectionHotSpotCurried,
-                enabledPredicate
+                enabledPredicate,
+                viewType
             )
             DEPRECATED_VIEW_TYPE -> ViewHolder(
                 view,
                 itemClickListener,
                 inSelectionHotSpotCurried,
-                enabledPredicate
+                enabledPredicate,
+                viewType
             )
             else -> throw NotImplementedError()
         }
@@ -75,19 +80,21 @@ class ItemsAdapter(
         itemView: View,
         private val itemClickListener: (Item) -> Unit,
         inSelectionHotSpot: (event: MotionEvent) -> Boolean,
-        private val enabledPredicate: (Item) -> Boolean
+        private val enabledPredicate: (Item) -> Boolean,
+        private val viewType: ViewType
     ) : SelectionViewHolder<Item>(itemView, inSelectionHotSpot) {
         private val name = itemView.findViewById<TextView>(R.id.name)
         private val details = itemView.findViewById<TextView>(R.id.details)
         private val name_details_container =
             itemView.findViewById<View>(R.id.name_details_container)
+        private val image = itemView.findViewById<ImageButton>(R.id.image)
         override val selectionContainer = itemView.findViewById<View>(R.id.container)
 
         override fun bind(item: Item, isActivated: Boolean, isActionModeEnabled: Boolean) {
             super.bind(item, isActivated, isActionModeEnabled)
             details.isVisible = !isActivated
-            name_details_container.alpha =
-                if (isActionModeEnabled && !enabledPredicate(item)) 0.2f else 1.0f
+            name_details_container.alpha = if (isActionModeEnabled && !enabledPredicate(item)) 0.2f else 1.0f
+            if (viewType == DEPRECATED_VIEW_TYPE) image.setOnClickListener { itemView.context.toast("This item has been deprecated and can't be selected") }
         }
 
         override fun bind(item: Item) {
