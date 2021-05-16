@@ -9,6 +9,9 @@
 1. recyclerview-selection using String as a way to identify items (this allows mutability in the list as opposed to using position of the item in the list. Position of an item might change when the list mutates)
 2. ActionMode is displayed when items are activated.
 3. Activation of an item happens when long-press and also when the delete icon is clicked (due to implementation of `inSelectionHotspot` to activate when a specific item is clicked)
+4. Only certain items that meet the criteria get activated, others don't and those get "disabled" by making them less visible when ActionMode gets activated (`SelectionPredicate`)
+5. If the list mutates while the user is in ActionMode the amount of selected items is updated and if there are none selected anymore then the ActionMode finishes.
+6. Support for multiple ViewTypes, which behave differently upon click.
 
 Useful links:
 
