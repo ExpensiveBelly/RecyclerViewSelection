@@ -1,0 +1,11 @@
+name: Build
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Android Build
+        uses: vgaidarji/android-github-actions-build@v1.0.1
